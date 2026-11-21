@@ -28,7 +28,7 @@ services:
 
   # 3. NeonClipping Web Application
   neonclipping:
-    build: .
+    image: neonclipping-neonclipping:latest
     container_name: neonclipping-app
     ports:
       - "8770:8770"
