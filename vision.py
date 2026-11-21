@@ -6,13 +6,14 @@ No model weights are downloaded or images sent to a hosted provider.
 import base64
 import hashlib
 import json
+import os
 import subprocess
 import threading
 import time
 import urllib.request
 import uuid
 from pathlib import Path
-OLLAMA='http://127.0.0.1:11434'
+OLLAMA=os.environ.get('OLLAMA_HOST', 'http://127.0.0.1:11434')
 def clean_description(answer):
     try:
         decoded=json.loads(answer)

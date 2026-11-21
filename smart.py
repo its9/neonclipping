@@ -1,7 +1,7 @@
 """Smart highlight refinement: shortlist by motion/audio, read each candidate's
 transcript locally, let local Ollama score and title it. Falls back to the
 activity score when Ollama is unavailable."""
-import json, urllib.request
+import json, os, urllib.request
 from highlights import rank
 import excite, learn
 import curation
@@ -10,7 +10,7 @@ from captions import transcribe
 
 SCOUT_MODEL='base'     # deep mode overrides with a stronger model
 _=0   # fast reading of candidates; final captions use a better model
-OLLAMA='http://127.0.0.1:11434'
+OLLAMA=os.environ.get('OLLAMA_HOST', 'http://127.0.0.1:11434')
 PROMPT=('You are selecting complete, interesting short video moments. Loudness and fast movement are NOT quality by themselves. '
         'Quiet funny dialogue, a specific insight, an unexpected reversal, a revealing opinion and a complete story can score as highly as action. '
         'Score the actual CLIP, not surrounding context. Prefer a clear setup, meaningful stakes and an actual payoff. '

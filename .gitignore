@@ -57,3 +57,9 @@ __pycache__/
 !.gitattributes
 !.github/workflows/
 !.github/workflows/*
+!Dockerfile
+!docker-compose.yml
+!.dockerignore
+!.vscode/
+!.vscode/*
+

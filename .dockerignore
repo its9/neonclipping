@@ -1,0 +1,10 @@
+.venv
+__pycache__
+*.pyc
+.git
+.github
+data/*.mp4
+data/*.m4a
+data/*.part
+data/*.json
+data/models
