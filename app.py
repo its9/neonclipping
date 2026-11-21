@@ -53,6 +53,13 @@ def media(id:str):
  p=DATA/(id+'.mp4')
  if not p.exists():raise HTTPException(404)
  return FileResponse(p,media_type='video/mp4')
+@app.delete('/media/{id}')
+def delete_media(id:str):
+ if not id.isalnum():raise HTTPException(400)
+ for f in DATA.glob(f'{id}*'):
+  if f.is_file():
+   f.unlink(missing_ok=True)
+ return {'ok':True}
 @app.get('/assets/{name}')
 def assets(name:str):
  if name not in ('app.js','style.css','extras.js','transcripts.js','vision.js','report.js'):raise HTTPException(404)
